@@ -1,7 +1,18 @@
-version: "3.9"
+version: "3.8"
 
 services:
-  my-app:
-    image: my-app
+  mongo:
+    image: mongo:4.4
+    container_name: mongo_db
+    restart: always
     ports:
-      - "3000:3000"
+      - "27017:27017"
+
+  fastapi:
+    build: .
+    container_name: fastapi_app
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
