@@ -14,5 +14,7 @@ services:
     restart: always
     ports:
       - "8000:8000"
+    environment:
+      - MONGO_CONNECTION_STRING=mongodb+srv://foultrip:futbol03@cluster0.zvglw0r.mongodb.net/
     depends_on:
       - mongo
